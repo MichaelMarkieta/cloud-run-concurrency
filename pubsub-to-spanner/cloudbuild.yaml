@@ -6,7 +6,6 @@
    args: ['push', 'gcr.io/cloud-run-concurrency/pubsub-to-spanner:$COMMIT_SHA']
  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
    entrypoint: gcloud
-   args:4
    - 'run'
    - 'deploy'
    - 'pubsub-to-spanner'

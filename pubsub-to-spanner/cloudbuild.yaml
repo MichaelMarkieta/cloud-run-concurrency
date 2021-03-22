@@ -1,7 +1,7 @@
  steps:
  - name: 'gcr.io/cloud-builders/docker'
    args: ['build', '-t', 'gcr.io/cloud-run-concurrency/pubsub-to-spanner:$COMMIT_SHA', '.']
-   dir: 'pubsub-to-spanner'
+   dir: 'pubsub-to-spanner/'
  - name: 'gcr.io/cloud-builders/docker'
    args: ['push', 'gcr.io/cloud-run-concurrency/pubsub-to-spanner:$COMMIT_SHA']
  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'

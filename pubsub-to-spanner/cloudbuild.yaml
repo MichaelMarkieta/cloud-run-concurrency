@@ -5,7 +5,7 @@
  - name: 'gcr.io/cloud-builders/docker'
    args: ['push', 'gcr.io/cloud-run-concurrency/pubsub-to-spanner:$COMMIT_SHA']
  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-   entrypoint: gcloud
+   entrypoint: 'gcloud'
    - 'run'
    - 'deploy'
    - 'pubsub-to-spanner'

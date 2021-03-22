@@ -1,19 +1,10 @@
- steps:
- - name: 'gcr.io/cloud-builders/docker'
-   args: ['build', '-t', 'gcr.io/cloud-run-concurrency/pubsub-to-spanner:$COMMIT_SHA', '.']
-   dir: 'pubsub-to-spanner/'
- - name: 'gcr.io/cloud-builders/docker'
-   args: ['push', 'gcr.io/cloud-run-concurrency/pubsub-to-spanner:$COMMIT_SHA']
- - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-   entrypoint: 'gcloud'
-   - 'run'
-   - 'deploy'
-   - 'pubsub-to-spanner'
-   - '--image'
-   - 'gcr.io/cloud-run-concurrency/pubsub-to-spanner:$COMMIT_SHA'
-   - '--region'
-   - 'us-central1'
-   - '--platform'
-   - 'managed'
- images:
- - 'gcr.io/cloud-run-concurrency/pubsub-to-spanner:$COMMIT_SHA'
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/cloud-run-concurrency/pubsub-to-spanner:$COMMIT_SHA', '.']
+    dir: 'pubsub-to-spanner/'
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/cloud-run-concurrency/pubsub-to-spanner:$COMMIT_SHA']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args: ['gcloud', 'run', 'deploy', 'pubsub-to-spanner', '--image', 'gcr.io/cloud-run-concurrency/pubsub-to-spanner:$COMMIT_SHA', '--region', 'us-central1', '--platform', 'managed']
+images:
+  - 'gcr.io/cloud-run-concurrency/pubsub-to-spanner:$COMMIT_SHA'
